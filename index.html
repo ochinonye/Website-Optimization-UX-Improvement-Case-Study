@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Website Optimization & UX Improvement Review — Case Study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #0d9488;
+            --accent-soft: #f0fdfa;
+            --accent-border: #ccfbf1;
+            --text: #334155;
+            --text-light: #64748b;
+            --text-muted: #94a3b8;
+            --bg: #ffffff;
+            --bg-soft: #f8fafc;
+            --bg-warm: #fafaf9;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --success: #10b981;
+            --success-soft: #ecfdf5;
+            --warning: #f59e0b;
+            --warning-soft: #fffbeb;
+            --danger: #ef4444;
+            --danger-soft: #fef2f2;
+            --info: #3b82f6;
+            --info-soft: #eff6ff;
+            --purple: #8b5cf6;
+            --purple-soft: #f5f3ff;
+            --radius: 14px;
+            --radius-sm: 10px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .display { font-family: 'Playfair Display', serif; font-weight: 700; }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ===== HEADER ===== */
+        .case-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #134e4a 100%);
+            color: white;
+            padding: 90px 0 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-header::before {
+            content: '';
+            position: absolute;
+            top: -40%; right: -15%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(13,148,136,0.12) 0%, transparent 70%);
+        }
+
+        .case-header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%; left: -10%;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%);
+        }
+
+        .header-inner { position: relative; z-index: 2; }
+
+        .header-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .header-tag .dot {
+            width: 6px; height: 6px;
+            background: #5eead4;
+            border-radius: 50%;
+            animation: pulse 2.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%,100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .case-header h1 {
+            font-size: clamp(30px, 5vw, 50px);
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            margin-bottom: 18px;
+            max-width: 720px;
+        }
+
+        .case-header h1 .accent { color: #5eead4; }
+
+        .header-subtitle {
+            font-size: 17px;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.7;
+            max-width: 560px;
+            margin-bottom: 36px;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item { display: flex; flex-direction: column; gap: 5px; }
+        .meta-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.45);
+            font-weight: 600;
+        }
+        .meta-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: white;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section { padding: 80px 0; }
+        .section-alt { background: var(--bg-soft); }
+
+        .section-header { margin-bottom: 52px; }
+        .section-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: clamp(26px, 3.5vw, 34px);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 14px;
+            line-height: 1.2;
+        }
+        .section-desc {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.7;
+            max-width: 640px;
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            padding: 32px;
+            transition: var(--transition);
+        }
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--border);
+            transform: translateY(-2px);
+        }
+
+        /* ===== BUSINESS OVERVIEW ===== */
+        .biz-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .biz-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .biz-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            padding: 28px;
+            transition: var(--transition);
+        }
+        .biz-card:hover {
+            box-shadow: var(--shadow);
+            border-color: var(--border);
+        }
+        .biz-card h4 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .biz-card p {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .biz-visual {
+            background: linear-gradient(145deg, #f0fdfa 0%, #e0f2fe 100%);
+            border-radius: var(--radius);
+            padding: 40px;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .biz-visual::before {
+            content: '';
+            position: absolute;
+            width: 250px; height: 250px;
+            background: radial-gradient(circle, rgba(13,148,136,0.08) 0%, transparent 70%);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .biz-logo {
+            width: 72px; height: 72px;
+            background: linear-gradient(135deg, var(--accent), #0f766e);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 24px rgba(13,148,136,0.25);
+        }
+
+        .biz-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .biz-type {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+
+        .biz-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .biz-tag {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 100px;
+            background: white;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        /* ===== CHALLENGES ===== */
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .challenge-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            padding: 28px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            transition: var(--transition);
+        }
+
+        .challenge-card:hover {
+            box-shadow: var(--shadow);
+            border-color: var(--danger);
+        }
+
+        .challenge-icon {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            background: var(--danger-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .challenge-content h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+        .challenge-content p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ===== GOALS ===== */
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .goal-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .goal-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--purple));
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .goal-card:hover::before { transform: scaleX(1); }
+        .goal-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+
+        .goal-icon {
+            width: 56px; height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 16px;
+        }
+
+        .goal-card h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .goal-card p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ===== BEFORE / AFTER ===== */
+        .ba-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .ba-panel {
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+        .ba-panel:hover { box-shadow: var(--shadow-lg); }
+
+        .ba-header {
+            padding: 14px 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ba-before .ba-header { background: var(--danger-soft); color: var(--danger); }
+        .ba-after .ba-header { background: var(--success-soft); color: var(--success); }
+
+        .ba-content {
+            padding: 28px;
+            background: white;
+            min-height: 280px;
+        }
+
+        .before-hero {
+            background: #f3f4f6;
+            padding: 24px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .before-hero h2 {
+            font-size: 20px;
+            color: #374151;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .before-hero p {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 16px;
+        }
+        .before-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #9ca3af;
+            color: white;
+            border-radius: 4px;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .before-services {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .before-service {
+            background: #f9fafb;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #4b5563;
+            border: 1px solid #e5e7eb;
+        }
+
+        .after-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3a5f 100%);
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .after-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -20%;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(13,148,136,0.2) 0%, transparent 70%);
+        }
+        .after-hero h2 {
+            font-size: 22px;
+            color: white;
+            margin-bottom: 10px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+        .after-hero p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 2;
+        }
+        .after-btn {
+            display: inline-block;
+            padding: 10px 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(13,148,136,0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .after-services {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .after-service {
+            background: white;
+            padding: 18px;
+            border-radius: 10px;
+            font-size: 13px;
+            color: var(--text);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .after-service:hover {
+            border-color: var(--accent-border);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        .after-service .svc-icon {
+            font-size: 20px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .after-service strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .after-service span {
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+        /* ===== REDESIGN SECTIONS ===== */
+        .redesign-showcase {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .redesign-header {
+            padding: 20px 28px;
+            background: var(--bg-soft);
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .redesign-header h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .redesign-body { padding: 32px; }
+
+        .mock-browser {
+            background: var(--primary);
+            border-radius: 12px 12px 0 0;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .browser-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: #f59e0b; }
+        .dot-green { background: #10b981; }
+
+        .browser-bar {
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 5px 12px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .mock-content {
+            border: 1px solid var(--border-light);
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            overflow: hidden;
+        }
+
+        .mock-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #134e4a 100%);
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .mock-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%; right: -10%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(13,148,136,0.1) 0%, transparent 70%);
+        }
+        .mock-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 100px;
+            font-size: 11px;
+            color: #5eead4;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .mock-hero h2 {
+            font-size: 32px;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
+        }
+        .mock-hero p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.65);
+            max-width: 480px;
+            margin: 0 auto 24px;
+            position: relative;
+            z-index: 2;
+        }
+        .mock-hero-btns {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+        .mock-btn {
+            padding: 12px 28px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .mock-btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 16px rgba(13,148,136,0.3);
+        }
+        .mock-btn-outline {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .mock-services {
+            padding: 48px 32px;
+            background: var(--bg-soft);
+        }
+        .mock-section-title {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .mock-section-title h3 {
+            font-size: 22px;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .mock-section-title p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        .mock-svc-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .mock-svc-card {
+            background: white;
+            border-radius: 12px;
+            padding: 28px 24px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+        .mock-svc-card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-3px);
+            border-color: var(--accent-border);
+        }
+        .mock-svc-icon {
+            width: 52px; height: 52px;
+            border-radius: 14px;
+            background: var(--accent-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin: 0 auto 14px;
+        }
+        .mock-svc-card h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+        .mock-svc-card p {
+            font-size: 12px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .mock-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3a5f 100%);
+            padding: 56px 32px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .mock-cta h3 {
+            font-size: 26px;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        .mock-cta p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .mock-contact {
+            padding: 48px 32px;
+            background: white;
+        }
+        .mock-contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .mock-contact-info h4 {
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+        .mock-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 13px;
+            color: var(--text);
+        }
+        .mock-contact-icon {
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            background: var(--accent-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .mock-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .mock-input {
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--text);
+            background: var(--bg-soft);
+        }
+        .mock-input::placeholder { color: var(--text-muted); }
+        .mock-textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        .mock-submit {
+            padding: 12px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .mobile-showcase {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .phone-frame {
+            width: 280px;
+            height: 560px;
+            background: var(--primary);
+            border-radius: 36px;
+            padding: 10px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        .phone-screen {
+            width: 100%; height: 100%;
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            position: relative;
+        }
+        .phone-notch {
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 100px; height: 24px;
+            background: var(--primary);
+            border-radius: 0 0 14px 14px;
+            z-index: 10;
+        }
+        .phone-content {
+            padding: 40px 16px 16px;
+            height: 100%;
+            overflow-y: auto;
+        }
+        .phone-hero {
+            background: linear-gradient(135deg, var(--primary), #1e3a5f);
+            margin: -40px -16px 16px;
+            padding: 48px 16px 24px;
+            text-align: center;
+        }
+        .phone-hero h3 {
+            font-size: 18px;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .phone-hero p {
+            font-size: 11px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 14px;
+        }
+        .phone-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .phone-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+        .phone-card strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 13px;
+        }
+        .phone-card span {
+            color: var(--text-light);
+            font-size: 11px;
+        }
+        .phone-nav {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: white;
+            border-top: 1px solid var(--border-light);
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-around;
+            font-size: 18px;
+        }
+
+        /* ===== UX IMPROVEMENTS ===== */
+        .ux-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .ux-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            padding: 28px;
+            transition: var(--transition);
+        }
+        .ux-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--border);
+        }
+        .ux-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .ux-icon {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .ux-card h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .ux-card p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.65;
+            margin-bottom: 14px;
+        }
+        .ux-detail {
+            background: var(--bg-soft);
+            border-radius: 8px;
+            padding: 14px;
+            font-size: 12px;
+            color: var(--text);
+            line-height: 1.6;
+            border: 1px solid var(--border-light);
+        }
+        .ux-detail strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ===== IMPACT ===== */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .impact-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            padding: 32px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .impact-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+            border-color: var(--accent-border);
+        }
+        .impact-icon {
+            width: 56px; height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 16px;
+            background: var(--accent-soft);
+        }
+        .impact-card h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .impact-card p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+        .case-footer {
+            background: var(--primary);
+            color: rgba(255,255,255,0.55);
+            padding: 48px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .biz-grid, .ba-container, .ux-grid { grid-template-columns: 1fr; }
+            .challenge-grid, .goals-grid, .impact-grid { grid-template-columns: 1fr; }
+            .mock-svc-grid { grid-template-columns: 1fr; }
+            .mock-contact-grid { grid-template-columns: 1fr; }
+            .mobile-showcase { flex-direction: column; }
+        }
+
+        @media (max-width: 600px) {
+            .case-header { padding: 60px 0 40px; }
+            .section { padding: 52px 0; }
+            .header-meta { gap: 20px; }
+        }
+
+        /* Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="case-header">
+    <div class="container header-inner">
+        <div class="header-tag">
+            <span class="dot"></span>
+            Portfolio Case Study
+        </div>
+        <h1>Business Website Optimization <span class="accent">& UX Improvement Review</span></h1>
+        <p class="header-subtitle">A strategic analysis and redesign of a real estate business website to improve user experience, professionalism, customer trust, and online conversion.</p>
+        <div class="header-meta">
+            <div class="meta-item">
+                <span class="meta-label">Industry</span>
+                <span class="meta-value">Real Estate</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Focus</span>
+                <span class="meta-value">UX &middot; Design &middot; Communication</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Role</span>
+                <span class="meta-value">Web Support & UX Specialist</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- BUSINESS OVERVIEW -->
+<section class="section" id="overview">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">01 &mdash; Business Overview</span>
+            <h2 class="section-title">Horizon Realty Group</h2>
+            <p class="section-desc">A mid-sized real estate agency specializing in residential property sales, rentals, and property management across the metropolitan area.</p>
+        </div>
+        <div class="biz-grid">
+            <div class="biz-info">
+                <div class="biz-card reveal">
+                    <h4>What They Do</h4>
+                    <p>Horizon Realty Group helps families and professionals buy, sell, and rent residential properties. They offer full-service property management, market analysis, and investment consulting. With 15+ years in the market, they handle everything from first-time homebuyer guidance to portfolio management for investors.</p>
+                </div>
+                <div class="biz-card reveal">
+                    <h4>Target Audience</h4>
+                    <p>Primary audiences include first-time homebuyers (ages 28&ndash;40), relocating professionals, real estate investors, and property owners seeking management services. Most clients discover the business through online search, referrals, and local listings.</p>
+                </div>
+                <div class="biz-card reveal">
+                    <h4>Website Purpose</h4>
+                    <p>The website serves as the primary digital touchpoint for lead generation, property showcase, and credibility building. It needs to convert visitors into inquiries, establish trust through professionalism, and make property discovery intuitive and engaging.</p>
+                </div>
+            </div>
+            <div class="biz-visual reveal">
+                <div class="biz-logo">&#127968;</div>
+                <div class="biz-name">Horizon Realty Group</div>
+                <div class="biz-type">Residential Real Estate Agency</div>
+                <div class="biz-tags">
+                    <span class="biz-tag">Property Sales</span>
+                    <span class="biz-tag">Rentals</span>
+                    <span class="biz-tag">Management</span>
+                    <span class="biz-tag">Investment</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CHALLENGES -->
+<section class="section section-alt" id="challenges">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">02 &mdash; Website Challenges Identified</span>
+            <h2 class="section-title">What Was Holding Them Back</h2>
+            <p class="section-desc">A comprehensive audit revealed critical issues across layout, messaging, navigation, and trust signals &mdash; all contributing to poor user engagement and low inquiry conversion.</p>
+        </div>
+        <div class="challenge-grid">
+            <div class="challenge-card reveal">
+                <div class="challenge-icon">&#128450;&#65039;</div>
+                <div class="challenge-content">
+                    <h4>Cluttered Layout</h4>
+                    <p>The homepage featured 8 competing sections above the fold with no visual hierarchy. Property listings, agent bios, testimonials, and a newsletter signup all competed for attention, creating cognitive overload.</p>
+                </div>
+            </div>
+            <div class="challenge-card reveal">
+                <div class="challenge-icon">&#128280;</div>
+                <div class="challenge-content">
+                    <h4>Weak Call-to-Action</h4>
+                    <p>The primary CTA &mdash; "Contact Us" &mdash; was buried in the footer. No clear path guided visitors toward scheduling a consultation or viewing listings. The button styling was inconsistent and visually unremarkable.</p>
+                </div>
+            </div>
+            <div class="challenge-card reveal">
+                <div class="challenge-icon">&#128241;</div>
+                <div class="challenge-content">
+                    <h4>Poor Mobile Responsiveness</h4>
+                    <p>On mobile devices, text overflowed containers, images stretched awkwardly, and navigation required horizontal scrolling. Over 60% of traffic came from mobile, yet the experience was effectively broken.</p>
+                </div>
+            </div>
+            <div class="challenge-card reveal">
+                <div class="challenge-icon">&#8596;&#65039;</div>
+                <div class="challenge-content">
+                    <h4>Inconsistent Spacing</h4>
+                    <p>Padding and margins varied wildly between sections. Some areas felt cramped while others had excessive whitespace. The lack of a consistent grid system made the site feel unprofessional and hastily assembled.</p>
+                </div>
+            </div>
+            <div class="challenge-card reveal">
+                <div class="challenge-icon">&#9203;</div>
+                <div class="challenge-content">
+                    <h4>Outdated Appearance</h4>
+                    <p>The design used gradients and drop shadows popular in 2012, with a serif font pairing that felt dated. The color scheme (bright red and yellow) clashed and undermined the premium positioning of the brand.</p>
+                </div>
+            </div>
+            <div class="challenge-card reveal">
+                <div class="challenge-icon">&#129517;</div>
+                <div class="challenge-content">
+                    <h4>Confusing Navigation</h4>
+                    <p>The menu contained 12 items with nested dropdowns three levels deep. Critical pages like "Property Listings" were hidden under "Services," while "About" contained unrelated content mixed with team bios.</p>
+                </div>
+            </div>
+            <div class="challenge-card reveal">
+                <div class="challenge-icon">&#128737;&#65039;</div>
+                <div class="challenge-content">
+                    <h4>Weak Trust-Building Elements</h4>
+                    <p>No client testimonials were visible on the homepage. There were no trust badges, no recent sales data, no professional certifications displayed, and the "About" page lacked team photos or credentials.</p>
+                </div>
+            </div>
+            <div class="challenge-card reveal">
+                <div class="challenge-icon">&#128172;</div>
+                <div class="challenge-content">
+                    <h4>Unclear Messaging</h4>
+                    <p>The headline read "Welcome to Horizon Realty" &mdash; generic and forgettable. Value propositions were buried in paragraphs of text. Visitors couldn't quickly understand why they should choose this agency over competitors.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GOALS -->
+<section class="section" id="goals">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">03 &mdash; Optimization Goals</span>
+            <h2 class="section-title">Strategic Objectives</h2>
+            <p class="section-desc">Every redesign decision was guided by clear, measurable goals focused on user experience, business credibility, and conversion optimization.</p>
+        </div>
+        <div class="goals-grid">
+            <div class="goal-card reveal">
+                <div class="goal-icon" style="background:var(--info-soft);">&#127919;</div>
+                <h4>Improve User Experience</h4>
+                <p>Create an intuitive, frustration-free browsing experience that guides visitors naturally from discovery to inquiry.</p>
+            </div>
+            <div class="goal-card reveal">
+                <div class="goal-icon" style="background:var(--accent-soft);">&#10024;</div>
+                <h4>Improve Professionalism</h4>
+                <p>Modernize the visual design to reflect the quality and trustworthiness of a 15-year established real estate brand.</p>
+            </div>
+            <div class="goal-card reveal">
+                <div class="goal-icon" style="background:var(--purple-soft);">&#129517;</div>
+                <h4>Improve Navigation Clarity</h4>
+                <p>Restructure the information architecture so visitors can find listings, services, and contact information within 2 clicks.</p>
+            </div>
+            <div class="goal-card reveal">
+                <div class="goal-icon" style="background:var(--success-soft);">&#129309;</div>
+                <h4>Improve Customer Trust</h4>
+                <p>Integrate social proof, credentials, recent sales, and transparent communication to build confidence in potential clients.</p>
+            </div>
+            <div class="goal-card reveal">
+                <div class="goal-icon" style="background:var(--warning-soft);">&#128172;</div>
+                <h4>Improve Communication Flow</h4>
+                <p>Make contacting the agency effortless with multiple touchpoints, clear response expectations, and simple inquiry forms.</p>
+            </div>
+            <div class="goal-card reveal">
+                <div class="goal-icon" style="background:#fce7f3;">&#128241;</div>
+                <h4>Improve Mobile Usability</h4>
+                <p>Deliver a fully responsive experience where every feature, form, and listing works flawlessly on smartphones and tablets.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="section section-alt" id="before-after">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">04 &mdash; Before &amp; After Comparison</span>
+            <h2 class="section-title">Homepage Transformation</h2>
+            <p class="section-desc">A side-by-side comparison of the original homepage versus the optimized redesign, highlighting key structural and visual improvements.</p>
+        </div>
+        <div class="ba-container reveal">
+            <div class="ba-panel ba-before">
+                <div class="ba-header">&#9888;&#65039; Before &mdash; Original Homepage</div>
+                <div class="ba-content">
+                    <div class="before-hero">
+                        <h2>Welcome to Horizon Realty</h2>
+                        <p>Your trusted partner in real estate since 2008. We help you find the perfect home.</p>
+                        <a href="#" class="before-btn">Learn More</a>
+                    </div>
+                    <div class="before-services">
+                        <div class="before-service">&#127968; Property Sales</div>
+                        <div class="before-service">&#127970; Rentals</div>
+                        <div class="before-service">&#128203; Management</div>
+                        <div class="before-service">&#128188; Investment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ba-panel ba-after">
+                <div class="ba-header">&#10003; After &mdash; Optimized Redesign</div>
+                <div class="ba-content">
+                    <div class="after-hero">
+                        <h2>Find Your Perfect Home With Confidence</h2>
+                        <p>Trusted real estate guidance for buyers, sellers, and investors. 500+ families served across the metro area.</p>
+                        <a href="#" class="after-btn">Browse Listings</a>
+                    </div>
+                    <div class="after-services">
+                        <div class="after-service">
+                            <span class="svc-icon">&#127968;</span>
+                            <strong>Buy a Home</strong>
+                            <span>Expert guidance from search to closing</span>
+                        </div>
+                        <div class="after-service">
+                            <span class="svc-icon">&#127991;&#65039;</span>
+                            <strong>Sell Your Property</strong>
+                            <span>Market analysis &amp; strategic pricing</span>
+                        </div>
+                        <div class="after-service">
+                            <span class="svc-icon">&#128273;</span>
+                            <strong>Rentals</strong>
+                            <span>Quality properties, verified listings</span>
+                        </div>
+                        <div class="after-service">
+                            <span class="svc-icon">&#128200;</span>
+                            <strong>Invest</strong>
+                            <span>Portfolio growth &amp; ROI optimization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- REDESIGNED SECTIONS -->
+<section class="section" id="redesign">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">05 &mdash; Redesigned Website Sections</span>
+            <h2 class="section-title">Modern Design Concepts</h2>
+            <p class="section-desc">High-fidelity mockups of key website sections demonstrating improved visual hierarchy, spacing, typography, and user flow.</p>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="redesign-showcase reveal">
+            <div class="redesign-header">
+                <span style="font-size:20px;">&#128421;&#65039;</span>
+                <h3>Hero Section &mdash; Clear Value Proposition &amp; Dual CTAs</h3>
+            </div>
+            <div class="redesign-body" style="padding:0;">
+                <div class="mock-browser">
+                    <span class="browser-dot dot-red"></span>
+                    <span class="browser-dot dot-yellow"></span>
+                    <span class="browser-dot dot-green"></span>
+                    <span class="browser-bar">horizonrealty.com</span>
+                </div>
+                <div class="mock-content">
+                    <div class="mock-hero">
+                        <div class="mock-hero-badge">
+                            <span style="font-size:10px;">&#9733;</span> Rated #1 Real Estate Agency 2026
+                        </div>
+                        <h2 class="display">Find Your Perfect Home<br>With Confidence</h2>
+                        <p>Trusted real estate guidance for buyers, sellers, and investors. 500+ families served, $200M+ in property sales, and a 4.9-star client rating.</p>
+                        <div class="mock-hero-btns">
+                            <a href="#" class="mock-btn mock-btn-primary">Browse Listings</a>
+                            <a href="#" class="mock-btn mock-btn-outline">Book a Consultation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <div class="redesign-showcase reveal">
+            <div class="redesign-header">
+                <span style="font-size:20px;">&#128421;&#65039;</span>
+                <h3>Services Section &mdash; Visual Cards With Clear Descriptions</h3>
+            </div>
+            <div class="redesign-body" style="padding:0;">
+                <div class="mock-browser">
+                    <span class="browser-dot dot-red"></span>
+                    <span class="browser-dot dot-yellow"></span>
+                    <span class="browser-dot dot-green"></span>
+                    <span class="browser-bar">horizonrealty.com/services</span>
+                </div>
+                <div class="mock-content">
+                    <div class="mock-services">
+                        <div class="mock-section-title">
+                            <h3>How We Can Help You</h3>
+                            <p>Comprehensive real estate services tailored to your goals</p>
+                        </div>
+                        <div class="mock-svc-grid">
+                            <div class="mock-svc-card">
+                                <div class="mock-svc-icon">&#127968;</div>
+                                <h4>Buy a Home</h4>
+                                <p>From first search to final closing, we guide you through every step of the homebuying journey.</p>
+                            </div>
+                            <div class="mock-svc-card">
+                                <div class="mock-svc-icon">&#127991;&#65039;</div>
+                                <h4>Sell Your Property</h4>
+                                <p>Strategic pricing, professional staging advice, and targeted marketing to maximize your sale.</p>
+                            </div>
+                            <div class="mock-svc-card">
+                                <div class="mock-svc-icon">&#128273;</div>
+                                <h4>Property Management</h4>
+                                <p>Full-service management for landlords including tenant screening, maintenance, and rent collection.</p>
+                            </div>
+                            <div class="mock-svc-card">
+                                <div class="mock-svc-icon">&#128200;</div>
+                                <h4>Investment Consulting</h4>
+                                <p>Data-driven market analysis and portfolio strategy for real estate investors seeking growth.</p>
+                            </div>
+                            <div class="mock-svc-card">
+                                <div class="mock-svc-icon">&#128269;</div>
+                                <h4>Market Analysis</h4>
+                                <p>Detailed neighborhood reports, pricing trends, and comparable sales data for informed decisions.</p>
+                            </div>
+                            <div class="mock-svc-card">
+                                <div class="mock-svc-icon">&#128203;</div>
+                                <h4>Rental Services</h4>
+                                <p>Verified listings, tenant placement, and lease management for renters and property owners.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="redesign-showcase reveal">
+            <div class="redesign-header">
+                <span style="font-size:20px;">&#128421;&#65039;</span>
+                <h3>CTA Section &mdash; Compelling Conversion Point</h3>
+            </div>
+            <div class="redesign-body" style="padding:0;">
+                <div class="mock-browser">
+                    <span class="browser-dot dot-red"></span>
+                    <span class="browser-dot dot-yellow"></span>
+                    <span class="browser-dot dot-green"></span>
+                    <span class="browser-bar">horizonrealty.com/contact</span>
+                </div>
+                <div class="mock-content">
+                    <div class="mock-cta">
+                        <h3 class="display">Ready to Make Your Move?</h3>
+                        <p>Schedule a free 30-minute consultation with one of our experienced agents.<br>No obligation &mdash; just expert advice tailored to your situation.</p>
+                        <a href="#" class="mock-btn mock-btn-primary" style="padding:14px 36px; font-size:14px;">Book Your Free Consultation</a>
+                        <p style="margin-top:16px; font-size:12px; color:rgba(255,255,255,0.5);">Response within 2 hours &bull; Available 7 days a week</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="redesign-showcase reveal">
+            <div class="redesign-header">
+                <span style="font-size:20px;">&#128421;&#65039;</span>
+                <h3>Contact Section &mdash; Multiple Touchpoints &amp; Simple Form</h3>
+            </div>
+            <div class="redesign-body" style="padding:0;">
+                <div class="mock-browser">
+                    <span class="browser-dot dot-red"></span>
+                    <span class="browser-dot dot-yellow"></span>
+                    <span class="browser-dot dot-green"></span>
+                    <span class="browser-bar">horizonrealty.com/contact</span>
+                </div>
+                <div class="mock-content">
+                    <div class="mock-contact">
+                        <div class="mock-section-title">
+                            <h3>Get In Touch</h3>
+                            <p>We'd love to hear from you. Reach out however works best.</p>
+                        </div>
+                        <div class="mock-contact-grid">
+                            <div class="mock-contact-info">
+                                <h4>Contact Information</h4>
+                                <div class="mock-contact-item">
+                                    <span class="mock-contact-icon">&#128205;</span>
+                                    <span>124 Metro Avenue, Suite 400<br>Cityville, ST 12345</span>
+                                </div>
+                                <div class="mock-contact-item">
+                                    <span class="mock-contact-icon">&#128222;</span>
+                                    <span>(555) 234-5678</span>
+                                </div>
+                                <div class="mock-contact-item">
+                                    <span class="mock-contact-icon">&#9993;&#65039;</span>
+                                    <span>hello@horizonrealty.com</span>
+                                </div>
+                                <div class="mock-contact-item">
+                                    <span class="mock-contact-icon">&#128368;&#65039;</span>
+                                    <span>Mon&ndash;Fri: 9AM&ndash;7PM<br>Sat&ndash;Sun: 10AM&ndash;5PM</span>
+                                </div>
+                            </div>
+                            <div class="mock-form">
+                                <input type="text" class="mock-input" placeholder="Your Name">
+                                <input type="email" class="mock-input" placeholder="Email Address">
+                                <input type="tel" class="mock-input" placeholder="Phone Number">
+                                <select class="mock-input">
+                                    <option>I'm interested in...</option>
+                                    <option>Buying a Home</option>
+                                    <option>Selling a Property</option>
+                                    <option>Rentals</option>
+                                    <option>Investment</option>
+                                    <option>Property Management</option>
+                                </select>
+                                <textarea class="mock-input mock-textarea" placeholder="Tell us about your needs..."></textarea>
+                                <button class="mock-submit">Send Message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Layout -->
+        <div class="redesign-showcase reveal">
+            <div class="redesign-header">
+                <span style="font-size:20px;">&#128241;</span>
+                <h3>Mobile Layout &mdash; Fully Responsive Experience</h3>
+            </div>
+            <div class="redesign-body">
+                <div class="mobile-showcase">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <div class="phone-notch"></div>
+                            <div class="phone-content">
+                                <div class="phone-hero">
+                                    <h3>Find Your Home</h3>
+                                    <p>Trusted guidance for buyers &amp; sellers</p>
+                                    <a href="#" class="phone-btn">Browse Listings</a>
+                                </div>
+                                <div class="phone-card">
+                                    <strong>&#127968; Buy a Home</strong>
+                                    <span>Expert guidance from search to closing</span>
+                                </div>
+                                <div class="phone-card">
+                                    <strong>&#127991;&#65039; Sell Your Property</strong>
+                                    <span>Strategic pricing &amp; marketing</span>
+                                </div>
+                                <div class="phone-card">
+                                    <strong>&#128273; Rentals</strong>
+                                    <span>Quality verified listings</span>
+                                </div>
+                                <div class="phone-card">
+                                    <strong>&#128200; Invest</strong>
+                                    <span>Portfolio growth strategy</span>
+                                </div>
+                                <div style="text-align:center; padding: 20px 0;">
+                                    <a href="#" class="phone-btn">Book Consultation</a>
+                                </div>
+                            </div>
+                            <div class="phone-nav">
+                                <span>&#127968;</span>
+                                <span>&#128269;</span>
+                                <span>&#128172;</span>
+                                <span>&#128222;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="max-width: 400px;">
+                        <h3 style="font-size: 20px; color: var(--primary); margin-bottom: 16px;">Mobile-First Design Principles</h3>
+                        <div style="display: flex; flex-direction: column; gap: 14px;">
+                            <div class="card" style="padding: 18px;">
+                                <strong style="font-size: 14px; color: var(--primary);">&#128208; Touch-Friendly Interface</strong>
+                                <p style="font-size: 13px; margin-top: 6px;">Buttons minimum 44px height, generous tap targets, thumb-friendly navigation at the bottom.</p>
+                            </div>
+                            <div class="card" style="padding: 18px;">
+                                <strong style="font-size: 14px; color: var(--primary);">&#9889; Fast Loading</strong>
+                                <p style="font-size: 13px; margin-top: 6px;">Optimized images, lazy loading, and minimal JavaScript for sub-3-second load times on 4G.</p>
+                            </div>
+                            <div class="card" style="padding: 18px;">
+                                <strong style="font-size: 14px; color: var(--primary);">&#127919; Priority Content</strong>
+                                <p style="font-size: 13px; margin-top: 6px;">Hero shows only essential info. Services stack vertically. CTA is always one tap away.</p>
+                            </div>
+                            <div class="card" style="padding: 18px;">
+                                <strong style="font-size: 14px; color: var(--primary);">&#128506;&#65039; Simplified Navigation</strong>
+                                <p style="font-size: 13px; margin-top: 6px;">Bottom tab bar replaces complex dropdown menu. Four core actions always visible.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- UX IMPROVEMENTS -->
+<section class="section section-alt" id="ux">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">06 &mdash; UX &amp; Communication Improvements</span>
+            <h2 class="section-title">Design System &amp; Strategic Changes</h2>
+            <p class="section-desc">Detailed breakdown of the UX decisions, design principles, and communication improvements implemented across the redesign.</p>
+        </div>
+        <div class="ux-grid">
+            <div class="ux-card reveal">
+                <div class="ux-card-header">
+                    <div class="ux-icon" style="background:var(--accent-soft);">&#8596;&#65039;</div>
+                    <h4>Spacing &amp; Layout</h4>
+                </div>
+                <p>Implemented an 8px baseline grid system with consistent vertical rhythm. Section padding standardized to 80px desktop / 48px mobile. Card internal padding set to 32px for breathable content.</p>
+                <div class="ux-detail">
+                    <strong>Before:</strong> Random margins between 12px&ndash;60px with no system.<br>
+                    <strong>After:</strong> 8px grid with predictable spacing scale (8, 16, 24, 32, 48, 64, 80).
+                </div>
+            </div>
+            <div class="ux-card reveal">
+                <div class="ux-card-header">
+                    <div class="ux-icon" style="background:var(--info-soft);">&#128296;</div>
+                    <h4>Typography Hierarchy</h4>
+                </div>
+                <p>Established a clear type scale: Display (48&ndash;56px) for hero headlines, H2 (32&ndash;40px) for section titles, H3 (20&ndash;24px) for card headers, and Body (15&ndash;16px) for readable paragraphs. Line height optimized to 1.6 for body text.</p>
+                <div class="ux-detail">
+                    <strong>Before:</strong> Single font size (16px) used for everything including headlines.<br>
+                    <strong>After:</strong> 6-level type scale with Playfair Display for headlines, Inter for body.
+                </div>
+            </div>
+            <div class="ux-card reveal">
+                <div class="ux-card-header">
+                    <div class="ux-icon" style="background:var(--success-soft);">&#128065;&#65039;</div>
+                    <h4>Readability &amp; Contrast</h4>
+                </div>
+                <p>All text meets WCAG AA contrast standards (4.5:1 minimum). Body text color shifted from pure gray (#6b7280) to softer slate (#334155) on white backgrounds. Dark sections use 65% opacity white for comfortable reading.</p>
+                <div class="ux-detail">
+                    <strong>Before:</strong> Light gray text on light backgrounds (2.8:1 contrast).<br>
+                    <strong>After:</strong> Slate text on white (7.2:1 contrast) &mdash; fully accessible.
+                </div>
+            </div>
+            <div class="ux-card reveal">
+                <div class="ux-card-header">
+                    <div class="ux-icon" style="background:var(--purple-soft);">&#128202;</div>
+                    <h4>Visual Hierarchy</h4>
+                </div>
+                <p>Hero section now leads with a compelling value proposition and social proof badge. Services are presented as scannable cards with icons instead of a bulleted list. CTAs use high-contrast buttons with clear action verbs.</p>
+                <div class="ux-detail">
+                    <strong>Before:</strong> 8 competing elements above the fold with equal visual weight.<br>
+                    <strong>After:</strong> Clear focal point &rarr; supporting text &rarr; action buttons &rarr; secondary content.
+                </div>
+            </div>
+            <div class="ux-card reveal">
+                <div class="ux-card-header">
+                    <div class="ux-icon" style="background:var(--warning-soft);">&#128739;&#65039;</div>
+                    <h4>Customer Journey</h4>
+                </div>
+                <p>Redesigned user flow: Landing &rarr; Value Proposition &rarr; Services &rarr; Social Proof &rarr; CTA &rarr; Contact. Each step naturally leads to the next with contextual CTAs. No dead ends &mdash; every page has a clear next action.</p>
+                <div class="ux-detail">
+                    <strong>Before:</strong> Users landed on generic welcome page with no clear path forward.<br>
+                    <strong>After:</strong> Intentional funnel from awareness &rarr; interest &rarr; consideration &rarr; action.
+                </div>
+            </div>
+            <div class="ux-card reveal">
+                <div class="ux-card-header">
+                    <div class="ux-icon" style="background:#fce7f3;">&#128172;</div>
+                    <h4>Clearer Messaging</h4>
+                </div>
+                <p>Headlines now speak to customer outcomes ("Find Your Perfect Home") rather than company introductions ("Welcome to Horizon Realty"). Value propositions are front-loaded. Every section answers: "What is in it for the visitor?"</p>
+                <div class="ux-detail">
+                    <strong>Before:</strong> "Welcome to Horizon Realty" &mdash; company-centric, no value.<br>
+                    <strong>After:</strong> "Find Your Perfect Home With Confidence" &mdash; customer-centric, outcome-focused.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- IMPACT -->
+<section class="section" id="impact">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">07 &mdash; Expected Business Impact</span>
+            <h2 class="section-title">How These Changes Drive Results</h2>
+            <p class="section-desc">Projected business outcomes based on UX best practices, industry benchmarks, and the specific improvements implemented in this redesign.</p>
+        </div>
+        <div class="impact-grid">
+            <div class="impact-card reveal">
+                <div class="impact-icon">&#129309;</div>
+                <h4>Increased Trust</h4>
+                <p>Professional design, social proof badges, and clear credentials signal reliability. Trust is the #1 factor in real estate decisions, and the redesigned site establishes it within 5 seconds of landing.</p>
+            </div>
+            <div class="impact-card reveal">
+                <div class="impact-icon">&#128200;</div>
+                <h4>Improved Engagement</h4>
+                <p>Clear visual hierarchy and intuitive navigation reduce bounce rates and increase time-on-site. Visitors explore more pages, view more listings, and interact with more CTAs.</p>
+            </div>
+            <div class="impact-card reveal">
+                <div class="impact-icon">&#127760;</div>
+                <h4>Stronger Online Presence</h4>
+                <p>Modern, mobile-responsive design improves SEO rankings and social sharing. A polished website becomes a marketing asset that represents the brand across all digital channels.</p>
+            </div>
+            <div class="impact-card reveal">
+                <div class="impact-icon">&#128172;</div>
+                <h4>Better Customer Communication</h4>
+                <p>Multiple contact touchpoints, clear response expectations, and a simple inquiry form remove friction from the communication process. Clients know exactly how and when to reach out.</p>
+            </div>
+            <div class="impact-card reveal">
+                <div class="impact-icon">&#128279;</div>
+                <h4>More Inquiries</h4>
+                <p>Strategic CTA placement, compelling value propositions, and reduced friction in the contact process directly increase form submissions and consultation bookings.</p>
+            </div>
+            <div class="impact-card reveal">
+                <div class="impact-icon">&#11088;</div>
+                <h4>Competitive Differentiation</h4>
+                <p>In a market where most competitors have dated websites, a modern, professional presence immediately positions Horizon Realty as the premium choice for discerning clients.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="case-footer">
+    <div class="container">
+        <p>Business Website Optimization &amp; UX Improvement Review &mdash; Case Study</p>
+        <p style="margin-top:6px; opacity:0.7;">Designed &amp; Analyzed by a Web Support &amp; UX Specialist</p>
+    </div>
+</footer>
+
+<script>
+    // Scroll reveal animation
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
